@@ -1,0 +1,32 @@
+_BASE_: [
+  '../datasets/ext_voc.yml',
+  '../runtime.yml',
+  './_base_/optimizer_80e.yml',
+  './_base_/ppyoloe_plus_crn.yml',
+  './_base_/ppyoloe_plus_reader.yml',
+]
+
+log_iter: 100
+snapshot_epoch: 5
+weights:  output/ext_myPPYoloeVoce_120e/model_final
+
+# 加载之前的预训练模型
+pretrain_weights: output/myPPYoloeVoce_60e/model_final.pdparams
+depth_mult: 1.0
+width_mult: 1.0
+
+
+TrainReader:
+  batch_size: 32
+
+epoch: 120
+LearningRate:
+  base_lr: 0.01
+  schedulers:
+    - !CosineDecay
+      max_epochs: 160
+    - !LinearWarmup
+      start_factor: 0.
+      epochs: 4
+
+

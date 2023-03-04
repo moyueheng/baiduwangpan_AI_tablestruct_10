@@ -1,0 +1,21 @@
+metric: VOC
+map_type: 11point
+num_classes: 4
+
+TrainDataset:
+  !VOCDataSet
+    dataset_dir: /jinx/table_struct/baiduwangpan_AI_tablestruct_10/data
+    anno_path: ext_train.txt
+    label_list: label_list.txt
+    data_fields: ['image', 'gt_bbox', 'gt_class', 'difficult']
+
+EvalDataset:
+  !VOCDataSet
+    dataset_dir: /jinx/table_struct/baiduwangpan_AI_tablestruct_10/data
+    anno_path: ext_train.txt
+    label_list: label_list.txt
+    data_fields: ['image', 'gt_bbox', 'gt_class', 'difficult']
+
+TestDataset:
+  !ImageFolder
+    anno_path: label_list.txt

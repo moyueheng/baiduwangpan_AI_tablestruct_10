@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+data/*
+ext_myPPYoloeVoc_120e_submit.zip
+mymodel
